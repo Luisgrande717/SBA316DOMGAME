@@ -3,7 +3,7 @@ const playerCard = document.getElementById("player-card");
 const computerCard = document.getElementById("computer-card");
 const drawButton = document.getElementById("draw-button");
 const gameMessage = document.getElementById("game-message");
-const gameMessage2 = document.getElementById("game-message2");
+
 
 // Deck of cards (simplified: 2-14, where Ace = 14, King = 13, Queen = 12, Jack = 11)
 
@@ -18,29 +18,6 @@ const shuffleDeck = () => deck.sort(() => Math.random() - 0.5);
 // Function to draw a card
 const drawCard = () => deck[Math.floor(Math.random() * deck.length)];
 
-// Main game function
-// const playRound = () => {
-    
-//     let playerDraw = drawCard();
-//     let computerDraw = drawCard();
-
-//     // Display card values
-//     playerCard.textContent = playerDraw;
-//     computerCard.textContent = computerDraw;
-
-//     if (playerDraw > computerDraw) {
-
-//         gameMessage.textContent = "Player wins this round!";
-//     } else if (playerDraw < computerDraw) {
-//         gameMessage.textContent = "Computer wins this round!";
-//     } else {
-//         gameMessage.textContent = "It's a tie! Time for WAR!";
-//         // You can add "War" logic here where multiple cards are drawn
-//     }
-// };
-
-// // Event listener for "Draw Card" button
-// drawButton.addEventListener("click", playRound);
 
 const playRound = () => {
 

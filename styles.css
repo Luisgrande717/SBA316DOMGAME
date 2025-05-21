@@ -72,3 +72,9 @@ body {
 #reset-button:hover {
     background-color: #b02a37;
 }
+
+.scoreboard {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}

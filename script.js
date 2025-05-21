@@ -5,6 +5,7 @@ const drawButton = document.getElementById("draw-button");
 const gameMessage = document.getElementById("game-message");
 
 
+
 // Deck of cards (simplified: 2-14, where Ace = 14, King = 13, Queen = 12, Jack = 11)
 
 const deck = [];
@@ -24,7 +25,7 @@ const playRound = () => {
     let playerDraw = drawCard();
     let computerDraw = drawCard();
 
-    // Display card values using textContent (simpler, avoids unnecessary HTML parsing)
+    // Display card values using textContent
     playerCard.textContent = playerDraw;
     computerCard.textContent = computerDraw;
 
@@ -43,9 +44,6 @@ const playRound = () => {
 
 // Event listener for button click
 drawButton.addEventListener("click", playRound);
-
-
-
 
 // Initial shuffle
 shuffleDeck();

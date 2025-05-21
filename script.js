@@ -1,5 +1,6 @@
 // Select elements
 const playerCard = document.getElementById("player-card");
+const resetButton = document.getElementById("reset-button");
 const computerCard = document.getElementById("computer-card");
 const drawButton = document.querySelector("#draw-button");
 const gameMessage = document.querySelector("#game-message");
@@ -39,11 +40,59 @@ const playRound = () => {
     } else {
         // Using textContent for a normal message
         gameMessage.textContent = "It's a tie! Time for WAR!";
+                // WAR scenario: draw 4 additional cards
+        let playerWarCards = [drawCard(), drawCard(), drawCard(), drawCard()];
+        let computerWarCards = [drawCard(), drawCard(), drawCard(), drawCard()];
+
+        // Show war cards dynamically
+        playerWarCards.forEach((value) => {
+            const warCard = document.createElement("div");
+            warCard.classList.add("card");
+            warCard.textContent = value;
+            playerContainer.appendChild(warCard);
+        });
+
+        computerWarCards.forEach((value) => {
+            const warCard = document.createElement("div");
+            warCard.classList.add("card");
+            warCard.textContent = value;
+            computerContainer.appendChild(warCard);
+        });
+
+        // Final WAR card decides winner
+        let finalPlayerCard = playerWarCards[3];
+        let finalComputerCard = computerWarCards[3];
+
+        setTimeout(() => {
+            if (finalPlayerCard > finalComputerCard) {
+                gameMessage.innerHTML = `<strong style='color: blue;'>Player wins the WAR!</strong>`;
+            } else if (finalPlayerCard < finalComputerCard) {
+                gameMessage.innerHTML = `<strong style='color: red;'>Computer wins the WAR!</strong>`;
+            } else {
+                gameMessage.textContent = "Another tie! War continues...";
+                setTimeout(playRound, 2000); // Recursively trigger another WAR
+            }
+           // Show popup message for reset after one WAR event
+            setTimeout(() => {
+                alert("WAR battle is over! Click the Reset button to restart.");
+            }, 1500);
+
+        }, 1500); // Delayed reveal for suspense
     }
 };
+
 
 // Event listener for button click
 drawButton.addEventListener("click", playRound);
 
 // Initial shuffle
 shuffleDeck();
+const resetGame = () => {
+    playerContainer.innerHTML = "";
+    computerContainer.innerHTML = "";
+    gameMessage.textContent = "Press 'Draw Card' to start!";
+    shuffleDeck(); // Reshuffle for a fresh game
+};
+
+resetButton.addEventListener("click", resetGame);
+

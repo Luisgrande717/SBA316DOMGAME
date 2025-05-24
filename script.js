@@ -24,6 +24,16 @@ const shuffleDeck = () => deck.sort(() => Math.random() - 0.5); //google suggest
 
 // Function to draw a card
 const drawCard = () => deck[Math.floor(Math.random() * deck.length)];
+//aded form function to game --player inputs their name
+document.getElementById("player-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const playerName = document.getElementById("player-name").value.trim();
+    if (playerName.length < 3) {
+        alert("Name must be at least 3 characters long.");
+        return;
+    }
+    alert(`Welcome to the game, ${playerName}!`);
+});
 
 
 //The guts of the program

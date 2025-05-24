@@ -10,7 +10,8 @@ const playerScoreElement = document.getElementById("player-score");
 const computerScoreElement = document.getElementById("computer-score");
 let playerScore = 0;
 let computerScore = 0;
-
+//BOM property/method
+console.log("Window size:", window.innerWidth, "x", window.innerHeight);
 
 // Deck of cards (Ace = 14, King = 13, Queen = 12, Jack = 11)
 const deck = [];
@@ -103,8 +104,8 @@ const playRound = () => {
             setTimeout(() => {
                 alert("WAR battle is over! Click the Reset button to restart.");
             }, 1000);
-
-        }, 1000); // Delayed reveal for suspense
+    
+        }, 500); // Delayed reveal for suspense
     }
     
 };
